@@ -1,0 +1,18 @@
+#include <stdio.h>
+int main( void )
+{
+    float v=0,i,ch;
+    double x=0.;
+    printf("Enter a value for harmonic series: ");
+    while(scanf("%d",&v)==0 || v<=0)
+    {
+        printf("Please enter a POSITIVE number: ");
+        while(1)
+        while((ch=getchar())!='\n')
+         if(ch==EOF)
+         break();
+                }
+for (i=v; i>=1; i--)
+         x+=1./i;
+         printf("The value for the series is %f\n", x);
+    }
