@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+
+#define No_of_words 1000
+#define Length_of_Words 100
+char words[No_of_words][Length_of_Words];
+int freq[No_of_words];
+int  Words_count=0;
+
+char *readWord(void){
+    int j = 0;
+    char word[No_of_words];
+    char cc = getchar();
+    int asci = (int)(cc);
+    while (!((asci >= 65 && asci <= 90) || (asci >= 97 && asci <= 122))) {
+        cc = getchar();
+        asci = (int)(cc);
+        if (asci == EOF)
+        {
+            break;
+        }
+    }
+
+    while ((asci >= 65 && asci <= 90) || (asci >= 97 && asci <= 122) || (asci >= 48 && asci <= 57))
+	{
+        word[j] = cc;
+        j++;
+        cc = getchar();     //reads in new character from standard input
+        asci = (int)(cc);
+    }
+
+    if (j==0) {
+        return NULL;
+    }
+    else {
+        char *a = (char *)malloc(j * sizeof(char));
+        a=word;
+        return a;
+    }
+}
+
+void count(char *word) {
+    int flag = 0;
+    int j;
+    for (j = 0; j <  Words_count; j++) {
+        if (strcmp(words[j], word) == 0) {
+            freq[j]++;
+            flag = 1;
+            break;
+        }
+    }
+    //if the word is not found in the list of previous words, the word is added to the words-array
+    //and its frequency is updated
+    if (flag == 0) {
+        strcpy(words[ Words_count], word);
+        freq[ Words_count]++;
+         Words_count++;
+    }
+}
+
+int main() {
+    char *newword = NULL;
+    printf("Enter a text ");
+    int cnt = 0;
+     do {
+        newword = readWord();
+        if (newword)             // If newword is not NULL, we update its frequency
+        {
+
+            count(newword); //update the word's frequency
+            cnt++; //1 is added to counter
+        }
+                                 //Then the next word is read from standard input.
+    } while (newword != NULL);  //Loop breaks if newword == NULL in any other loop than the first
+                               //Print all words that are read from standard input
+    int j;
+    for (j = 0; j <  Words_count; j++)
+    {
+        printf("%20s %d\n", words[j], freq[j]);
+    }
+    getchar();
+    return 0;
+}
