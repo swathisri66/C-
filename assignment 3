@@ -1,0 +1,130 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typed f struct Person {
+	char name[50];
+	int freq;
+	struct Person *next;
+} person, *plink;
+
+plink cons(char *n,plink temp)
+{
+	temp = (plink)malloc(sizeof(person));                //malloc(sizeof(plink));
+	if (temp == NULL) {
+		printf("Out of memory in cons\n");
+		exit(1);
+	}
+	else
+	{
+		strcpy(temp->name, n);
+		temp->next = NULL;
+		temp->freq = 0;
+		++(temp->freq);
+	}
+	return temp;
+}
+int check(char *n, plink head)
+{
+	plink temp2;
+	temp2 = head;
+	while (temp2 != NULL)
+	{
+		if (strcmp(temp2->name,n) == 0)
+		{
+			++(temp2->freq);
+			return 0;
+		}
+		temp2 = temp2->next;
+	}
+	return 1;
+}
+
+plink sort(plink head)
+{
+	int count=0;
+	plink temp,temp2,t,start=head;
+	while (start!= NULL)
+	{
+		count++;
+		start = start->next;
+	}
+	temp = temp2 = t = NULL;
+	for(int i =0;i<=count;i++)
+	{	temp = temp2 = head;
+		while (temp->next!= NULL)
+		{
+			if (temp->name[0] > temp->next->name[0])
+			{
+				t=temp->next;
+				temp->next=temp->next->next;
+				t->next= temp;
+				if(temp==head)
+				{ head = temp2 = t; }
+				else
+				{ temp2->next = t; }
+				temp = t;
+			}
+			temp2 = temp;
+			temp = temp->next;
+		}
+	}
+	t = head;
+return head;
+}
+
+plink addlist(plink head)
+{
+	//plink head = NULL;
+	plink temp = NULL;
+	plink p = NULL;
+	int y = 0, j = 0;
+	do
+	{
+		char str3[50];
+		gets(str3);
+		if (head == NULL)
+		{
+			temp = cons(str3, temp);
+			head = temp;
+		}
+		else if (head != NULL)
+		{
+			if (check(str3, head) == 1)
+			{
+				temp = cons(str3, temp);
+				p = head;
+				while (p->next != NULL)
+				{
+					p = p->next;
+				}
+				p->next = temp;
+			}
+		}
+		scanf("%d", &y);
+	} while (y == 0);
+
+	return head;
+}
+
+plink print(plink head)
+{
+	plink p;
+	p = head;
+	while (p != NULL)
+	{
+		printf("%s \t %d \n", p->name, p->freq);
+		p = p->next;
+	}
+	return head;
+}
+
+int main() {
+	plink head;
+	head = NULL;
+	head=addlist(head);
+	printf("Unsorted Linked List \n");
+	print(head);
+	head=sort(head);
+	printf("Sorted Linked List \n");
+	print(head);
+}
