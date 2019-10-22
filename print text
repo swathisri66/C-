@@ -1,0 +1,11 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+   cout << "swathi study in Uppsala University \n"; 
+   cout << "and done Master Thesis in Ericsson AB, Stockholm" << endl;
+   
+   return 0;
+}
