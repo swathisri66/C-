@@ -1,0 +1,96 @@
+/* Program to read two numbers and perform arithmetic operations on them */
+
+#include<stdio.h>
+
+int main()
+{
+  int a,b,c;
+  printf("Enter any two numbers : ");
+  scanf("%d %d",&a,&b);
+  c = a + b;
+  printf("\nSum = %d",c);
+  c = a - b;
+  printf("\n Difference = %d",c);
+  c = a * b;
+  printf("\nProduct = %d",c);
+  c = a / b;
+  printf("\nDivisoin = %d",c);
+  c = a % b;
+  printf("\nRemainder = %d",c);
+}
+
+----------------------------------------------------------------------------------
+
+/* Program to read two numbers and perform arithmetic operations on them */
+
+#include<stdio.h>
+
+int main()
+{
+  int a,b;
+  printf("Enter any two numbers : ");
+  scanf("%d %d",&a,&b);
+  printf("\nSum = %d",a + b);
+  printf("\n Difference = %d",a - b);
+  printf("\nProduct = %d",a * b);
+  printf("\nDivisoin = %d",a / b);
+  printf("\nRemainder = %d",a % b);
+}
+
+------------------------------------------------------------------------------
+
+/* Program to read two numbers and perform arithmetic operations on them */
+
+#include<stdio.h>
+
+int main()
+{
+  float a,b;
+  printf("Enter any two numbers : ");
+  scanf("%f %f",&a,&b);
+  printf("\nSum = %f",a + b);
+  printf("\n Difference = %f",a - b);
+  printf("\nProduct = %f",a * b);
+  printf("\nDivisoin = %f",a / b);
+//  printf("\nRemainder = %f",a % b); => Error
+}
+
+---------------------------------------------------------------------------
+
+/* Program to read radius of Circle, calculate and print its area and 
+perimeter */
+
+#include<stdio.h>
+#include<math.h>
+
+int main()
+{
+  float r,area,peri;
+  printf("Enter value for radius : ");
+  scanf("%f",&r);
+  area = M_PI * r * r;
+  peri = 2 * M_PI * r;
+  printf("\nArea of Circle = %f",area);
+  printf("\nPerimeter of Circle = %f",peri);
+}
+
+---------------------------------------------------------------------------
+
+/* Program for discount calculation(discount = 20%) */
+
+#include<stdio.h>
+
+int main()
+{
+  float pur_amt,discount,bill_amt;
+  printf("Enter Purchase Amount : ");
+  scanf("%f",&pur_amt);
+  discount = pur_amt * 20 / 100;
+  bill_amt = pur_amt - discount;
+  printf("\nYou Purchased for Rs. %.2f",pur_amt);
+  printf("\nYour Discount is Rs. %.2f",discount);
+  printf("\nYou have to pay Rs. %.2f",bill_amt);
+}
+
+---------------------------------------------------------------------------
+
