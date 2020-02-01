@@ -1,0 +1,208 @@
+Control Structures in C :
+
+1) if statement : Conditional branching statement
+a) Simple-IF : Here, we consider the true part of a condition only and ignore the false part.
+Syntax :
+if(condition)
+{
+ true-block;
+}
+=====
+Eg:
+/* Program on simple-if. Discount(20%) provided only when the 
+purchase amount is Min. 5000 */
+
+#include<stdio.h>
+
+int main()
+{
+  float pur_amt,discount=0.0,bill_amt;
+  printf("Enter Purchase Amount : ");
+  scanf("%f",&pur_amt);
+  if(pur_amt >= 5000)
+     discount = pur_amt * 20 / 100;
+  bill_amt = pur_amt - discount;
+  printf("\nYou Purchased for Rs. %.2f",pur_amt);
+  printf("\nYour Discount is Rs. %.2f",discount);
+  printf("\nYou have to pay Rs. %.2f",bill_amt);
+}
+=================================================
+b) if-else : Here, we consider both the true and false parts of a condition.
+Syntax :
+if(condition)
+{
+ true-block;
+}
+else
+{
+ false-block;
+}
+Eg:
+/* Program on if-else. If the purchase amount is Min. 5000,provide
+20% discount;otherwise provide 5% */
+
+#include<stdio.h>
+
+int main()
+{
+  float pur_amt,discount,bill_amt;
+  printf("Enter Purchase Amount : ");
+  scanf("%f",&pur_amt);
+  if(pur_amt >= 5000)
+     discount = pur_amt * 20 / 100;
+  else
+     discount = pur_amt * 5 / 100;
+  bill_amt = pur_amt - discount;
+  printf("\nYou Purchased for Rs. %.2f",pur_amt);
+  printf("\nYour Discount is Rs. %.2f",discount);
+  printf("\nYou have to pay Rs. %.2f",bill_amt);
+}
+==========================================
+=> Write a program to read marks of 2 subjects,calculate total and average and print whether the student is Pass or Fail.(Assume Pass Marks as 35)
+=> Write a program that reads age of a person and print whether he is eligible for voting or not.
+=> Write a program to check whether the given number is Even or Odd
+==========================================
+c) Nested-IF : Defining a condition inside another is called Nested IF.
+Syntax :
+if(condition)
+{
+ [if...else...];
+}
+else
+{
+ [if...else...];
+}
+Eg:
+/* Program for print the biggest of 3 numbers */
+
+#include<stdio.h>
+
+int main()
+{
+  int a,b,c;
+  printf("Enter any three numbers : ");
+  scanf("%d %d %d",&a,&b,&c);
+  if(a > b)
+  {
+  	if(a > c)
+  	  printf("%d is big",a);
+  	else
+  	  printf("%d is big",c);
+  }
+  else
+  {
+  	if(b > c)
+  	  printf("%d is big",b);
+  	else
+  	  printf("%d is big",c);
+  } 
+}
+================================================
+/* Alternate code */
+
+#include<stdio.h>
+
+int main()
+{
+  int a,b,c;
+  printf("Enter any three numbers : ");
+  scanf("%d %d %d",&a,&b,&c);
+  if(a>b && a>c)
+    printf("%d id big",a);
+  else if(b > c)
+    printf("%d is big",b);
+  else
+ 	printf("%d is big",c);
+}
+==================================================
+Biggest of 4 numbers(a,b,c,d):
+if(a>b && a>c && a>d)
+ printf("%d is big",a);
+else if(b>c && b>d)
+ printf("%d is big",b);
+else if(c > d)
+ printf("%d is big",c);
+else
+ printf("%d is big",d);
+===================================================
+d) else-if ladder : Every time when a condition becomes false,one more condition will raise. It syntax is :
+if(condition-1){====}
+  else if(condition-2){====}
+    else if(condition-3){====}
+    ....
+    else if(condition-n){====}
+    else
+    {
+     ====
+    }
+Eg: Biggest or smallest of 5 or more numbers
+====================================================
+2) switch statement : Selection statement
+
+Syntax :
+switch(choice-expression)
+{
+ case option-1  : statements;
+		  break;
+ case option-2  : statements;
+		  break;
+ ....
+ case option-n  : statements;
+		  break;
+ defualt     :  default-statements;
+}
+Eg:
+/* Program on switch statement */
+
+#include<stdio.h>
+
+int main()
+{
+ int a,b,choice;
+ printf("Enter any two numbers : ");
+ scanf("%d %d",&a,&b);
+ printf("\n1. Add.");
+ printf("\n2. Subtract.");
+ printf("\n3. Multiply.");
+ printf("\n4. Divide.");
+ printf("\nSelect Your Choice : ");
+ scanf("%d",&choice);
+ switch(choice)
+ {
+ 	case  1  :  printf("Sum = %d",a + b);
+ 			    break;
+ 	case  2  :  printf("Difference = %d",a - b);
+ 			    break;
+ 	case  3  :  printf("Product = %d",a * b);
+ 			    break;
+ 	case  4  :  printf("Division = %d",a / b);
+ 			    break;
+ 	default  :  printf("Invalid Choice. Please Try Again.");
+ }
+}
+==============================================
+3) goto statement : unconditional branching statement
+Syntax:
+====
+====
+goto label-name;
+====
+====
+label-name:
+	====
+	====
+Eg:
+
+/* Program on goto */
+
+#include<stdio.h>
+
+int main()
+{
+ puts("Hello! Where are you?");
+ goto APEC;
+ puts("I am not here"); => Unreachable code
+ APEC:
+  puts("I am at APEC");
+  puts("I am in C Class");
+}
