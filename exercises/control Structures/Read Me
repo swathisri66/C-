@@ -1,0 +1,14 @@
+Control Structures in C : These are the statements that specify the "Flow of Control" in a progress
+
+Statements has three types
+1. Sequential
+2. Selection/Branching 
+3. Iterative (Loops) => do-while, while, for
+
+Selection/Branching has two types
+1. Conditional => if, switch
+2. Unconditional => goto, break, continue, return
+
+Selection -- Choosing from a set of alternatives
+Branching -- Transferring the ocntrol from one location of a program to another
+Iterative -- Repeated execution of statements.
