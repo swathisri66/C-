@@ -1,0 +1,177 @@
+3) for loop(see P :
+Syntax :
+for(initialisation;condition;inc/dec)
+{
+ ====
+ ====
+}
+====
+Eg:
+/* Program to print the sum of first 'n' natural numbers */
+
+#include<stdio.h>
+
+int main()
+{
+  int n,i,sum = 0;
+  printf("Enter any Number : ");
+  scanf("%d",&n);
+  for(i=1;i<=n;i++)
+    sum = sum + i;
+  printf("Sum of Numbers upto Given Number : %d",sum);
+}
+===============================================
+int sum = 0;
+for(i=1;i<=n;i++)
+ sum = sum + i;
+Output : 1 + 2 + 3 + ... + n
+===============================================
+int sum = 0;
+for(i=1;i<=n;i++)
+ sum = sum + i * i;
+Output : 1**2 + 2**2 + 3**2 + ... + n**2
+===============================================
+int sum = 0;
+for(i=1;i<=n;i++)
+ sum = sum + i * i * i;
+Output : 1**3 + 2**3 + 3**3 + ... + n**3
+===============================================
+float sum = 0.0;
+for(i=1;i<=n;i++)
+  sum = sum + 1.0 / i;
+Output : 1.0/1 + 1.0/2 + 1.0/3 + ... + 1.0/n
+===============================================
+/* Program to print the factorial of a given number */
+
+#include<stdio.h>
+
+int main()
+{
+  int n,i;
+  long fact = 1;
+  printf("Enter any Number : ");
+  scanf("%d",&n);
+  if(n > 12)
+   printf("Input must be 0 to 12");
+  else
+  {
+   for(i=1;i<=n;i++)
+     fact = fact * i;
+   printf("Factorial of given number : %ld",fact);
+  }
+}
+=================================================
+/* Program to print the multiplication table of a given number */
+
+#include<stdio.h>
+#include<conio.h>
+
+void main()
+{
+ int n,i;
+ clrscr();
+ printf("Enter any number : ");
+ scanf("%d",&n);
+ for(i=1;i<=10;i++)
+  printf(" %d X 5d = %d \n",n,i,n*i);
+ getch();
+}
+==================================================
+/* Program to print the multiplication tables of all numbers upto given number */
+
+#include<stdio.h>
+#include<conio.h>
+#include<dos.h>
+
+void main()
+{
+ int n,i,x;
+ clrscr();
+ printf("Enter any number : ");
+ scanf("%d",&n);
+ for(x=1;x<=n;x++)
+ {
+  clrscr();
+  printf("Multiplication Table of %d is : \n",x);
+  for(i=1;i<=10;i++)
+    printf(" %d X %d = %d \n",x,i,x*i);
+  printf("\n Please wait to Continue....");
+  sleep(3);
+ }
+ printf("\n\n End of program...");
+ getch();
+}
+===========================================
+Using break and continue inside a loop:
+
+=> When break statement is used inside a loop, it terminates the loop permanently.
+=> When continue statement is used inside a loop, it terminates the current iteration only and continues with the next.
+Eg:
+/* Using break and continue inside a loop */
+
+#include<stdio.h>
+
+int main()
+{
+ int i;
+ printf("\n\n Using break inside a loop : ");
+ for(i=1;i<=5;i++)					 i
+ {							===
+  if(i == 3)						 1 <= 5 (T)
+    break;						 2 <= 5 (T)
+  printf("\t %d",i);  => 1 2				 3 <= 5 (T)
+ }
+ printf("\n\n Using continue inside a loop : ");	 i
+ for(i=1;i<=5;i++)					===
+ {							 1 <= 5(T)
+  if(i == 3)						 2 <= 5(T)
+    continue;						 3 <= 5(T)
+  printf("\t %d",i); => 1 2 4 5				 4 <= 5(T)
+ }							 5 <= 5(T)
+}							 6 <= 5(F)
+=================================================
+Arrays(See Pic) :
+Eg:
+/* Program to implement arrays */
+
+#include<stdio.h>
+
+int main()
+{
+  int a[5];
+  a[0] = 10;
+  a[1] = 20;
+  a[2] = 30;
+  a[3] = 40;
+  a[4] = 50;
+  printf("The Array Elements are : ");
+  printf("%d %d %d %d %d",a[0],a[1],a[2],a[3],a[4]);
+}
+index    0   1   2   3   4
+ a =>   10  20  30  40  50
+================================================
+NOTE : Since the elements of an array are accessed in sequence, arrays are also called "Linear or Sequential Lists".
+================================================
+/* Program to read and print an array.
+Also, print the sum of array elements */
+
+#include<stdio.h>
+
+int main()
+{
+  int a[30];
+  int n,i,sum = 0;
+  printf("Enter size of array : ");
+  scanf("%d",&n); 
+  for(i=0;i<n;i++)
+  {
+  	printf("Enter an array value : ");
+  	scanf("%d",&a[i]);
+  	sum = sum + a[i];
+  }
+  printf("The Array Elements are : ");
+  for(i=0;i<n;i++)
+   printf(" %d ",a[i]);
+  printf("\n\n Sum of Array Elements : %d",sum);
+}
+===================================
