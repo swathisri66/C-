@@ -1,0 +1,106 @@
+Pointers in C : 
+
+=> A Pointer is a variable that holds the address of another variable.
+=> A variable declared as pointer is allocated 2/4 bytes of memory.
+Syntax of declaring a pointer:
+datatype *var-name;
+Eg:
+ int *ptr; => "ptr" is a pointer variable that holds the address of an integer value.
+
+* => Value at
+& => Address of
+===========================================================
+int a;
+scanf("%d",&a);
+printf("%d",a); => Prints value of variable 'a'
+printf("%d",&a); => Prints address of variable 'a'
+===========================================================
+Implementing Pointers(See Fig):
+===========================================================
+/* Implementing pointer(or Dynamic) Arrays */
+
+#include<stdio.h>
+#include<alloc.h>
+
+int main()
+{
+  int *a;
+  int n,i;
+  printf("Enter size of array : ");
+  scanf("%d",&n);
+  a = (int *)malloc(n);
+  printf("Memory Created for array \n");
+  for(i=0;i<n;i++)
+  {
+  	printf("Enter an array value : ");
+  	scanf("%d",&a[i]);
+  }
+  printf("The Array Elements are : ");
+  for(i=0;i<n;i++)
+  printf("\t %d",a[i]);
+  free(a);
+  printf("\n Memory Deleted for array");
+}
+=============================================
+malloc() : Dynamic Memory Allocation
+Syntax :
+ ptr-var = (datatype *)malloc(size);
+Eg:
+  a = (int *)malloc(n); => 2 * n bytes of memory
+
+free() : Dynamic Memory Deallocation
+Syntax :
+ free(ptr-var);
+Eg:
+ free(a);
+=> malloc(),free() => alloc.h
+(+) :
+=> Dynamic Memory Allocation
+=> Effective memory utilization
+==============================================
+Functions in C : A function is a self-contained block of statements designed to perform a specific task. Functions are modules in C Language. They are also called "sub-programs".
+
+Need for Functions :
+-> In many programs,we need to execute the same set of statements in several parts of a program. Writing the statements again and again will have the following limitations:
+
+1) It increases the programming time.
+2) The program consumes more memory space.
+3) The chances of errors will increase.
+
+-> To overcome the above limitations,we can use functions. Using functions, the statements to be executed are written only once, but can be "called and executed" wherever required.
+
+-> Functions can be classified into two types: Built-In functions and User-defined functions.
+
+Steps for creating a user-defined function:
+1) Declaring the function prototype(or signature) : 
+return-type function-name(parameters,if any);
+
+2) Defining the function body : 
+return-type function-name(parameters,if any)
+{
+ // statements to execute when a function is invoked(called)
+}
+
+3) Calling or Invoking the function.
+
+NOTE :
+1) Parameters are the values that are passed as an input to a function. They are also called "Arguments".
+2) A function can accept any no. of parameters,but can return only one value at a time.
+3) If a function does not accept any parameters,we can keep the braces empty or can use the keyword "void". Also, If a function does not return any value,the return-type will be "void". The default return type of a function is "int".
+4) The function which calls another function is a "calling function" and the function that is called is a "called function".
+5) Parameters at the calling function are called "Actual Parameters" and those at the called function are called "Formal Parameters".
+
+Functions can be declared in 4 ways:
+-> Functions with Parameters and with return value
+ Eg: int add(int,int);
+-> Functions with parameters and without return value
+ Eg: void add(int,int);
+-> Functions without parameters and with return value
+ Eg: int add(void);
+-> Functions without parameters and without return value
+ Eg:
+  void add(void);
+================================================================
+What happens actually when a function is called(Invoked)?
+-> Whenever a function is called, control transfers from calling function to called function,executes the statements and after execution returns to the called function and completes the remaining statements of it.
+================================================================
