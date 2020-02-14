@@ -1,0 +1,275 @@
+/* Performing account-based operations */
+
+#include<stdio.h>
+#include<conio.h>
+
+float balance = 10000.00; // Global variable
+
+void main()
+{
+ void deposit(float);
+ void withdraw(float);
+ float showBalance(void);
+ float amt;
+ int choice,ch;
+ do
+ {
+  clrscr();
+  printf("\n\t\t ***************************");
+  printf("\n\t\t     WELCOME TO H.D.F.C     ");
+  printf("\n\t\t ***************************");
+  printf("\n\n\t\t 1. Deposit.");
+  printf("\n\n\t\t 2. Withdrawal.");
+  printf("\n\n\t\t 3. Show Balance. ");
+  printf("\n\n\t\t Select Your Option : ");
+  scanf("%d",&choice);
+  switch(choice)
+  {
+   case  1  :  printf("\n\t\t Enter Amount to Deposit : ");
+	       scanf("%f",&amt);
+	       deposit(amt);
+	       break;
+   case  2  :  printf("\n\t\t Enter Amount to withdraw : ");
+	       scanf("%f",&amt);
+	       if(balance - amt < 1000)
+       		printf("\n\t\t Insufficient Funds. Maintain Min. Balance");
+	       else
+	     	withdraw(amt);
+	       break;
+   case  3  :  amt = showBalance();
+	       printf("\n\t\t Your Existing Balance is Rs. %.2f",amt);
+	       break;
+   default  :  printf("\n\t\t Invalid Option. Please Try Agian.");
+  }
+  printf("\n\n\t\t Want to Continue(Type 1=>yes 2=>no) : ");
+  scanf("%d",&ch);
+ }while(ch == 1);
+ printf("\n\n\t\t *** THANK YOU. VISIT AGAIN *** ");
+ getch();
+}
+
+void deposit(float dep_amt)
+{
+ printf("\n\n\t\t Balance Before Deposit : Rs. %.2f",balance);
+ balance = balance + dep_amt;
+ printf("\n\n\t\t Balance After Deposit : Rs. %.2f",balance);
+}
+
+void withdraw(float w_amt)
+{
+ printf("\n\n\t\t Balance Before Withdrawal : Rs. %.2f",balance);
+ balance = balance - w_amt;
+ printf("\n\n\t\t Balance After Withdrawal : Rs. %.2f",balance);
+}
+
+float showBalance(void)
+{
+ return balance;
+}
+=======================================================
+/* Declaring the same variable name as both local and global.
+Implementing :: Operator  */
+
+#include<stdio.h>
+
+int a = 100; // Global Variable
+
+int main()
+{
+ int a = 'A'; // Local Variable
+ printf("Value of a = %d",a);
+ printf("\nValue of a = %d",::a);
+}
+======================================================
+NOTE : If the same variable name is declared as both local and global, priority is given to local variables only. Even if a variable is declared locally and if we want to access the global variable,Scope-Resolution Operator(::) is used.
+======================================================
+Implementing user-defined header files:
+
+1) Create a header file as below:
+// save this file as header.h
+
+int add(int x,int y)
+{
+  return x + y;
+}
+
+int sub(int x,int y)
+{
+  return x - y;
+}
+
+int mul(int x,int y)
+{
+  return x * y;
+}
+
+int div(int x,int y)
+{
+  return x / y;
+}
+========================================================
+2) Create a C Program that includes the above header file as below:
+/* Including the user-defined header file */
+
+#include<stdio.h>
+#include"header.h"
+
+int main()
+{
+  int a,b;
+  printf("Enter any two numbers : ");
+  scanf("%d %d",&a,&b);
+  printf("\n Sum = %d",add(a,b));
+  printf("\n Difference = %d",sub(a,b));
+  printf("\n Product = %d",mul(a,b));
+  printf("\n Division = %d",div(a,b));
+}
+=> Run the above program to see the result
+===============================================
+Including a header in a program:
+1) #include<filename.h> : The compiler searches for the header file directly in the include directory(or path)
+2) #include"filename.h" : 
+===============================================
+C:
+== TC
+   == bin => *.c/*.cpp => Current working(source) directory
+   == include => *.h => include(path) directory
+   == lib
+   == bgi
+   == ...
+
+#include<stdio.h> => Valid
+#include<header.h> => Error
+--------------
+#include"stdio.h" => Valid
+#include"header.h" => Valid
+==============================================
+Structures in C :
+
+=> A structure is a collection of values of different datatypes that share a common name. Structures are used to represent record formats of a file. Structures are user-defined datatypes.
+
+Syntax :
+struct Structure-name
+{
+ datatype var-1;
+ datatype var-2;
+ ...
+ datatype var-n;
+}; where the variables declared inside the structure are called structure members.
+Eg:
+struct Employee
+{
+ int empno;
+ char *name;
+ float salary;
+ ...
+};
+
+=> To access the members of a structure,we have to create an instance variable(called object) for it as below:
+struct structure-name obj-name;
+Eg:
+struct Employee e;
+
+=> With this object,we can access the structure members using dot(.) operator as :
+object.structure-member
+Eg:
+e.empno
+e.name
+e.salary
+...
+=========================================================
+/* Implementing structures */
+
+#include<stdio.h>
+
+int main()
+{
+  struct Student
+  {
+    int rollno;
+    char name[20];
+    char course[20];
+  };
+  struct Student s; // 's' is an object(variable) of Student type(42 bytes)
+  printf("Enter Roll Number : ");
+  scanf("%d",&s.rollno);
+  printf("Enter Student Name : ");
+  scanf("%s",s.name);
+  printf("Enter Course Joined : ");
+  scanf("%s",s.course);
+  printf(" The Student Record is : ");
+  printf("\n %d %s %s",s.rollno,s.name,s.course);
+}
+=================================================
+/* Implementing structures */
+
+#include<stdio.h>
+
+int main()
+{
+  struct Student
+  {
+    int rollno;
+    char name[20];
+    char course[20];
+  };
+  struct Student s1,s2,s3;
+  printf("Enter rollno,name and course : ");
+  scanf("%d %s %s",&s1.rollno,s1.name,s1.course);
+  printf("Enter rollno,name and course : ");
+  scanf("%d %s %s",&s2.rollno,s2.name,s2.course);
+  printf("Enter rollno,name and course : ");
+  scanf("%d %s %s",&s3.rollno,s3.name,s3.course);
+  printf(" The Student Records are : ");
+  printf("\n %d %s %s",s1.rollno,s1.name,s1.course);
+  printf("\n %d %s %s",s2.rollno,s2.name,s2.course);
+  printf("\n %d %s %s",s3.rollno,s3.name,s3.course);
+}
+=====================================================
+/* Implementing structures */
+
+#include<stdio.h>
+
+int main()
+{
+  struct Student
+  {
+    int rollno;
+    char name[20];
+    char course[20];
+  };
+  struct Student s[20]; // Array of structures
+  int n,i;
+  printf("Enter how many students : ");
+  scanf("%d",&n);
+  for(i=0;i<n;i++)
+  {
+   printf("Enter rollno,name and course : ");
+   scanf("%d %s %s",&s[i].rollno,s[i].name,s[i].course);
+  }
+  printf("The Student Records are : ");
+  for(i=0;i<n;i++)
+    printf("\n%d %s %s",s[i].rollno,s[i].name,s[i].course);
+}
+====================================================
+/* Implementing pointer to structures */
+
+#include<stdio.h>
+
+int main()
+{
+  struct Student
+  {
+    int rollno;
+    char name[20];
+    char course[20];
+  };
+  struct Student s,*ptr;
+  printf("Enter rollno,name and course : ");
+  scanf("%d %s %s",&s.rollno,s.name,s.course);
+  ptr = &s;
+  printf("The Student Record is : ");
+  printf("\n%d %s %s",ptr->rollno,ptr->name,ptr->course);
+}
+
+NOTE : To access the structure members using normal object, dot(.) operator is used. To access the structure members using pointer object,direction(->) operator is used.
