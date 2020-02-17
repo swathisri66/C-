@@ -1,0 +1,95 @@
+/* Differentiating unions */
+
+#include<stdio.h>
+
+int main()
+{
+  struct Sample1
+  {
+    int a,b,c;
+  };
+  union Sample2
+  {
+    int a,b,c;
+  };
+  struct Sample1 s1;
+  union Sample2 s2;
+  printf("Enter values for a,b,c under structure : ");
+  scanf("%d %d %d",&s1.a,&s1.b,&s1.c);
+  printf("Enter values for a,b,c under union : ");
+  scanf("%d %d %d",&s2.a,&s2.b,&s2.c);
+  printf("\nUnder structure : a = %d,b = %d,c = %d",s1.a,s1.b,s1.c);
+  printf("\n\nUnder union : a = %d,b = %d,c = %d",s2.a,s2.b,s2.c);
+}
+=========================================
+Assignment Operator(=):
+Shorthand Assignment Operators :
+Eg:
+a = a + b; => a += b;
+a = a - b; => a -= b;
+...
++=  -=  *=  /=  %=
+&=  |=  ^=  <<=  >>=
+Eg:
+a = a + 1; =>  a += 1;  =>  ++a;
+=========================================
+Conditional(Ternary) Operator :
+=> Used on 3 operands
+=> Used to represent simple conditions
+Syntax:
+(condition) ? true-block : false-block;
+Eg-1:
+if(n % 2 == 0)
+  printf("Even");
+else
+  printf("Odd");
+=>
+(n % 2 == 0)?printf("Even"):printf("Odd");
+Eg-2:
+if(a > b)
+ c = a;
+else
+ c = b;
+=> 
+(a > b)?c = a:c = b;
+=> 
+c = (a > b)?a:b;
+====================================================
+sizeof() : This operator returns the size of a variable or value in the form of no. of bytes.
+Eg:
+/* Implementing sizeof operator */
+
+#include<stdio.h>
+
+int main()
+{
+  int a[] = {10,20,30,40,50};
+  float f[] = {1.1,1.2,1.3,1.4,1.5,1.6};
+  char ch1[] = {'w','e','l','c','o','m','e'};
+  char ch2[] = "welcome";
+  char *ch3 = "welcome";
+  int *ptr;
+  struct Sample1
+  {
+   int a;
+   long l;
+   double d;
+  }s1;
+  union Sample2
+  {
+   int a;
+   long l;
+   double d;
+  }s2;
+  printf(" Size of a : %d",sizeof(a));
+  printf("\n Size of f : %d",sizeof(f));
+  printf("\n Size of ch1 : %d",sizeof(ch1));
+  printf("\n Size of ch2 : %d",sizeof(ch2));
+  printf("\n Size of ch3 : %d",sizeof(ch3));
+  printf("\n Size of ptr : %d",sizeof(ptr));
+  printf("\n Size of s1 : %d",sizeof(s1));
+  printf("\n Size of s2 : %d",sizeof(s2));
+  printf("\n 10 occupies %d bytes",sizeof(10));
+  printf("\n 1.1 occupies %d bytes",sizeof(1.1));
+}
+NOTE : The default datatype of an integer value is "int". The default datatype of a real number is "double".
